@@ -1,0 +1,19 @@
+function* NumbersGenerator(min=0, max=70) {
+    while (true) {
+        yield Math.floor(Math.random() * (max - min + 1)) + min;
+    }
+}
+async function Timeout(iterator, timeoutSeconds, delayMs = 100) {
+    const startTime = Date.now();
+    const timeoutMs = timeoutSeconds * 1000;
+    for (const value of iterator) {
+        console.log(value); 
+        if (Date.now() - startTime >= timeoutMs) { 
+           console.log("Час закінчився. Зупинка генерації")
+              break;
+        }
+    
+}
+}
+const generator = NumbersGenerator(10, 39);
+Timeout(generator, 8);
